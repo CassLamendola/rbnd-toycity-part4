@@ -5,7 +5,6 @@ require 'csv'
 class Udacidata
 	
 	@@data_path = File.dirname(__FILE__) + "/../data/data.csv"
-	#@file = Pathname(@data_path)
 
 	def self.create(attributes = {})
 		new_product = new(attributes)
@@ -22,4 +21,17 @@ class Udacidata
     		csv << data
     	end
     end
+
+    def self.all
+    	database = []
+    	CSV.foreach(@@data_path, {headers: true}) do |row|
+    		database << new(id: row[0], brand: row[1], name: row[2], price: row[3].to_f)
+    	end
+    	return database
+    end
+
+    def self.first(num = nil)
+    	num ? all[0..(num-1)] : all.first
+    end
+
 end
