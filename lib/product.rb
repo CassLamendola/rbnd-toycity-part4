@@ -1,7 +1,8 @@
 require_relative 'udacidata'
 
 class Product < Udacidata
-  attr_reader :id, :price, :brand, :name
+  attr_accessor :price, :brand, :name
+  attr_reader :id
 
   def initialize(opts={})
 

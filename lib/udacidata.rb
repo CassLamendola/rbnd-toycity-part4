@@ -45,6 +45,28 @@ class Udacidata
     	product.remove_from_database
     end
 
+    def self.where(options = {})
+    	if options[:brand]
+    		all.select do |product|
+    			product.brand == options[:brand]
+    		end
+    	else
+    		all.select do |product|
+    			product.name == options[:name]
+    		end
+    	end
+    end
+
+    def update(options = {})
+    	self.brand = options[:brand] if options[:brand]
+    	self.price = options[:price] if options[:price]
+    	self.name = options[:name] if options[:name]
+    	self.remove_from_database
+    	self.add_to_database
+    	return self
+    end
+
+
     def add_to_database
     	data = [self.id.to_s,self.brand,self.name,self.price]
     	CSV.open(@@data_path, "a") do |csv|
