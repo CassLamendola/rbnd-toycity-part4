@@ -5,6 +5,7 @@ require 'csv'
 class Udacidata
 	
 	@@data_path = File.dirname(__FILE__) + "/../data/data.csv"
+	create_finder_methods("brand", "name")
 
 	def self.create(attributes = {})
 		new_product = new(attributes)
