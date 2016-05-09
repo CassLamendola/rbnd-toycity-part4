@@ -1,5 +1,4 @@
 module Analyzable
-  # Your code goes here!
   	def average_price(product_arr)
   		total_price = 0
   		product_arr.each do |product|
@@ -30,7 +29,6 @@ module Analyzable
   		count_by_name(product_arr).each do |name, total|
   			report << " - #{name}: #{total}\n"
   		end
-  		puts report
   		return report
   	end
 
