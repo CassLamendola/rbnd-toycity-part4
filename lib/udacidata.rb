@@ -16,7 +16,6 @@ class Udacidata
       	return new_product
     end
 
-
     def self.all
     	@database = []
     	CSV.foreach(@@data_path, {headers: true}) do |row|
@@ -37,6 +36,7 @@ class Udacidata
     	all.each do |product|
     		return product if product.id == id
     	end
+        raise ProductNotFoundError, "There is no product with id: #{id}"
     end
 
     def self.destroy(id)
